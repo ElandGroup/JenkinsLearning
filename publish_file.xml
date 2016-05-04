@@ -1,0 +1,19 @@
+<project name="CSLL.Web_PRD" default="compile">
+ 
+  <target name="CustomizingConfigFile">
+
+    <if test="${property::exists('name.appsettings')}">
+      <xmlpoke
+            file="${source.website.dir}"
+            xpath="/configuration/appSettings/add[@key='Name']/@value"
+            value="${name.appsettings}">
+      </xmlpoke>
+    </if>
+  </target>
+
+  <target  name="Web_Publish">
+    <touch file="${target.website.dir}" />
+  </target>
+
+
+</project>
